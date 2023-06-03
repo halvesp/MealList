@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "user1",
+      "password": "password1",
+      "recipes": [
+        {
+          "name": "teste",
+          "description": "teste"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "username": "user2",
+      "password": "password2",
+      "recipes": []
+    },
+    {
+      "username": "user3",
+      "password": "password1",
+      "id": 3,
+      "recipes": [
+        {
+          "name": "torta de frango com queijo",
+          "description": "ewew"
+        }
+      ]
+    },
+    {
+      "username": "henrique",
+      "password": "senha123",
+      "recipes": [
+        {
+          "name": "torta de frango com queijo",
+          "description": "teste"
+        }
+      ],
+      "id": 4
+    }
+  ]
+}
