@@ -1,19 +1,28 @@
 <template>
-    <div class="login">
-      <h2>Login</h2>
-      <form @submit.prevent="handleLogin">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="username" required>
-  
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="password" required>
-  
-        <p v-if="error" class="error">{{ error }}</p>
-        <button><router-link :to="`/UserRegister`">Registrar</router-link></button>
-        <button type="submit">Login</button>
-      </form>
+  <div class="container">
+    <div class="image-side">
+      <!-- <img src="src/assets/recipe.jpg" alt="Login image" class="login-image"> -->
     </div>
-  </template>
+    <div class="login-side">
+      <div class="login-container">
+        <h2>Login</h2>
+        <form @submit.prevent="handleLogin" class="login-form">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" v-model="username" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" v-model="password" required>
+          </div>
+          <p v-if="error" class="error">{{ error }}</p>
+          <button class="logout-btn register-btn"><router-link :to="`/UserRegister`">Register</router-link></button>
+          <button class="logout-btn" type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
   
   <script>
   import axios from 'axios';
@@ -53,15 +62,77 @@
   </script>
   
   <style scoped>
-  .login {
-    width: 300px;
-    margin: 0 auto;
+  .container {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .image-side {
+    flex: 1;
+    background: url("@/assets/logoimg.png") no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  .login-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    background-color: #f8f9fa;
+  }
+  
+  .login-container {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
   }
   
   .error {
     color: red;
+    margin-bottom: 20px;
+  }
+  
+  .logout-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #007bff;
+    text-align: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .register-btn {
+    background-color: #6c757d;
+  }
+  
+  .logout-btn:hover {
+    opacity: 0.9;
   }
   </style>
   

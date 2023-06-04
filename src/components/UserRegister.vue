@@ -29,6 +29,9 @@
       };
     },
     methods: {
+      goBack() {
+        this.$router.go(-1)
+    },
         async handleRegister() {
             try {
                 const users = await axios.get('http://localhost:3000/users', {
