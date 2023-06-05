@@ -24,9 +24,10 @@
   export default {
     name: "FavoriteMeals",
     data() {
-        return {
-            favoriteMeals: [],
-        };
+      return {
+        favoriteMeals: [],
+        username: '',
+      };
     },
     methods: {
         goBack() {
@@ -37,17 +38,18 @@
             this.$router.push("/login");
         },
         toggleFavorite(meal) {
-            let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-            const updatedFavorites = favorites.filter(el => el.idMeal !== meal.idMeal);
-            localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-            this.favoriteMeals = updatedFavorites;
-        },
+        let favorites = JSON.parse(localStorage.getItem(`favorites_${this.username}`)) || [];
+        const updatedFavorites = favorites.filter(el => el.idMeal !== meal.idMeal);
+        localStorage.setItem(`favorites_${this.username}`, JSON.stringify(updatedFavorites));
+        this.favoriteMeals = updatedFavorites;
+      },
     },
     created() {
-        const user = JSON.parse(localStorage.getItem("user"));
-        if (user) {
-            this.favoriteMeals = JSON.parse(localStorage.getItem(`favorites_${user.username}`)) || [];
-        }
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user) {
+        this.username = user.username;
+        this.favoriteMeals = JSON.parse(localStorage.getItem(`favorites_${this.username}`)) || [];
+      }
     },
     components: { NavBar }
 };
