@@ -2,9 +2,8 @@
   <div>
     <!-- Navigation Menu -->
     <nav-bar/>
-
-    <div class="favorites-container">
-      <h2>Favorite Meals</h2>
+    <h2>Favorite Meals</h2>
+    <div class="favorites-container"> 
       <div v-for="meal in favoriteMeals" :key="meal.idMeal" class="meal-item">
         <h3>{{ meal.strMeal }}</h3>
         <p>{{ meal.strArea }}</p>
@@ -44,6 +43,7 @@
         this.favoriteMeals = updatedFavorites;
       },
     },
+    
     created() {
       const user = JSON.parse(localStorage.getItem("user"));
       if (user) {
@@ -55,7 +55,6 @@
 };
   </script>
   <style scoped>
-  /* ... previous styles ... */
   .nav-menu {
   display: flex;
   justify-content: end;
@@ -107,16 +106,16 @@
 }
 
   .favorites-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px;
     align-items: center;
     margin: 20px auto;
-    padding: 20px;
-    max-width: 600px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    padding: 40px;
   }
   
   .meal-item {
+    background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,6 +136,7 @@
   }
   
   .remove-favorite-btn {
+    margin-top: 20px;
     background-color: #f44336;
     color: white;
     border: none;
@@ -160,5 +160,4 @@
     text-decoration: none;
   }
   
-  /* ... rest of the styles ... */
   </style>

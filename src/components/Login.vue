@@ -16,7 +16,8 @@
             <input type="password" id="password" v-model="password" required>
           </div>
           <p v-if="error" class="error">{{ error }}</p>
-          <button class="logout-btn register-btn"><router-link :to="`/UserRegister`">Register</router-link></button>
+          <!-- Adicione um botão para ir para a página de registro -->
+          <button class="logout-btn register-btn" @click="goToRegister">Register</button>
           <button class="logout-btn" type="submit">Login</button>
         </form>
       </div>
@@ -37,6 +38,9 @@
       };
     },
     methods: {
+      goToRegister() {
+        this.$router.push('/UserRegister');  // substitua '/register' pelo caminho exato para a página de registro em seu aplicativo
+      },
       async handleLogin() {
         try {
           const response = await axios.get('http://localhost:3000/users', {

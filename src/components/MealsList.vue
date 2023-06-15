@@ -17,25 +17,29 @@
           <div class="meal-image-container">
             <img class="meal-image" :src="meal.strMealThumb" alt="Meal Image">
           </div>
-          <router-link :to="`/meal/${meal.idMeal}`" class="view-more">View More</router-link>
+          <router-link :to="`/meal/${meal.idMeal}`" class="view-more">Veja mais</router-link>
           <button @click="toggleFavorite(meal)" class="add-favorite-btn">
           {{ isFavorite(meal) ? 'Remove Favorite' : 'Add Favorite' }}
           </button>
+          <div v-if="favoriteMessage.meal && favoriteMessage.meal.idMeal === meal.idMeal" class="favorite-message">
+          {{ favoriteMessage.text }}
+          </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import axios from 'axios'
+import NavBar from './NavBar.vue'
   
-  <script>
-  import axios from 'axios'
-  import NavBar from './NavBar.vue'
-  
-  export default {
+export default {
     name: "MealsList",
     data() {
         return {
             meals: [],
-            searchTerm: ""
+            searchTerm: "",
+            favoriteMessage: { meal: null, text: '' }
         };
     },
     methods: {
@@ -52,9 +56,11 @@
             const found = favorites.some(el => el.idMeal === meal.idMeal);
             if (!found) {
                 favorites.push(meal);
+                this.favoriteMessage = { meal: meal, text: 'Added to favorites!' };
             }
             else {
                 favorites = favorites.filter(el => el.idMeal !== meal.idMeal);
+                this.favoriteMessage = { meal: meal, text: 'Removed from favorites!' };
             }
             localStorage.setItem(`favorites_${user.username}`, JSON.stringify(favorites));
         },
@@ -76,7 +82,7 @@
                 this.meals = response.data.meals;
             }
             else {
-                // Load random meals or do nothing
+                // Carregar receitas aleatóriamente, ou carregar nada
             }
         }
     },
@@ -88,10 +94,14 @@
     },
     components: { NavBar }
 }
-  </script>
+</script>
+  
   
   <style scoped>
-
+.favorite-message {
+  color: #4caf50;
+  margin-top: 5px;
+}
 .container{
   background-color: #f3f3f3;
 }
@@ -135,6 +145,7 @@
 }
 
 .meal-item {
+  background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,22 +1,23 @@
-<!-- MyRecipes.vue -->
 <template>
   <div>
     <nav-bar/>
-
-    <h2>My Recipes</h2>
-    <div v-if="recipes.length === 0">
-      <p>You have not created any recipes yet.</p>
-    </div>
-    <div class="meal-cards">
-      <div class="meal-item" v-for="(recipe, index) in recipes" :key="recipe.name">
-        <h3>{{ recipe.name }}</h3>
-        <p>{{ recipe.description }}</p>
-        <button class="logout-btn" @click="editRecipe(index)">Edit</button>
-        <button class="logout-btn" @click="deleteRecipe(index)">Delete</button>
+    
+    <h2 class="title">Minhas receitas</h2>
+    <div class="container">
+      <div v-if="recipes.length === 0">
+        <p>You have not created any recipes yet.</p>
       </div>
+      <div class="meal-cards">
+        <div class="meal-item" v-for="(recipe, index) in recipes" :key="recipe.name">
+          <h3>{{ recipe.name }}</h3>
+          <p>{{ recipe.description }}</p>
+          <button class="logout-btn" @click="editRecipe(index)">Edit</button>
+          <button class="logout-btn" @click="deleteRecipe(index)">Delete</button>
+        </div>
+      </div>
+      <edit-recipe v-if="editing" :recipe="recipes[recipeIndex]" @update="updateRecipe" @cancel="cancelEditing"></edit-recipe>
+      <button class="logout-btn"><router-link :to="`/registerRecipe`">Create Recipe</router-link></button>
     </div>
-    <edit-recipe v-if="editing" :recipe="recipes[recipeIndex]" @update="updateRecipe" @cancel="cancelEditing"></edit-recipe>
-    <button class="logout-btn"><router-link :to="`/registerRecipe`">Create Recipe</router-link></button>
   </div>
 </template>
 
@@ -73,6 +74,15 @@
   </script>
 
 <style scoped>
+
+.container{
+  padding-right: 50px;
+  padding-left: 50px;
+}
+.title{
+  font-size: 20px;
+  padding: 20px;
+}
 .nav-menu {
   display: flex;
   justify-content: end;
@@ -103,12 +113,14 @@
 }
 .meal-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 50px;
   justify-items: center;
 }
 
 .meal-item {
+  width: 400px;
+  background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,6 +154,8 @@
   border: none;
   padding: 10px;
   cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .logout-btn:hover,

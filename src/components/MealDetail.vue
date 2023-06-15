@@ -1,9 +1,10 @@
 <template>
    <nav-bar/>
   <div class="meal-detail">
-    
-    <h2>{{ meal.strMeal }}</h2>
-    <p>{{ meal.strInstructions }}</p>
+    <div>
+      <h2 class="meal-name">{{ meal.strMeal }}</h2>
+      <p class="meal-instructions">{{ meal.strInstructions }}</p>
+    </div>
     <img :src="meal.strMealThumb" alt="Meal Image" class="meal-image">
   </div>
 </template>
@@ -29,12 +30,24 @@ export default {
 
 <style scoped>
 .meal-detail {
-  width: 600px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  width: 90%;
   margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+.meal-instructions{
+  padding: 30px;
+  font-weight: 600;
+}
+.meal-name{
+  font-size: xx-large;
+  text-decoration: #4caf50;
+  padding: 10px;
 }
 
 .meal-image {

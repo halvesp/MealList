@@ -43,7 +43,6 @@ import NavBar from './NavBar.vue';
         },
         async handleNewRecipe() {
             try {
-                // get current user
                 const user = JSON.parse(localStorage.getItem("user"));
                 if (!user) {
                     this.message = "You must be logged in to create a recipe";
@@ -53,7 +52,6 @@ import NavBar from './NavBar.vue';
                     name: this.name,
                     description: this.description,
                 };
-                // add new recipe to user's recipe list on the server
                 const response = await axios.patch(`http://localhost:3000/users/${user.id}`, {
                     recipes: [...user.recipes, newRecipe],
                 });
@@ -149,7 +147,7 @@ import NavBar from './NavBar.vue';
 
 .message {
   margin-top: 20px;
-  color: red;
+  color: green;
 }
 
 .my-recipes-btn {

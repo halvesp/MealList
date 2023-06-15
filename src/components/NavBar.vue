@@ -71,7 +71,7 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  min-height: 400px;  /* Or any height you consider appropriate */
+  min-height: 400px; 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   overflow: auto;
 }
