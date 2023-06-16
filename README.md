@@ -1,3 +1,5 @@
+INTERGRANTES DO GRUPO
+Henrique Alves Pires, Fábio Giorgani, Thiago Rochedo, Gustavo de Lima 
 # myrecipe
 
 ## Project setup
