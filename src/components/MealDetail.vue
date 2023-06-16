@@ -4,6 +4,15 @@
     <div>
       <h2 class="meal-name">{{ meal.strMeal }}</h2>
       <p class="meal-instructions">{{ meal.strInstructions }}</p>
+      <li class="meal-ingredients">{{ meal.strIngredient1 }}</li>
+      <li class="meal-ingredients">{{ meal.strIngredient2 }}</li>
+      <li class="meal-ingredients">{{ meal.strIngredient3 }}</li>
+      <li class="meal-ingredients">{{ meal.strIngredient4 }}</li>
+      <li class="meal-ingredients">{{ meal.strIngredient5 }}</li>
+      <li class="meal-ingredients">{{ meal.strIngredient6 }}</li>
+      <li class="meal-ingredients">{{ meal.strIngredient7 }}</li>
+      <li class="meal-ingredients">{{ meal.strIngredient8 }}</li>
+      <li class="meal-ingredients">{{ meal.strIngredient9 }}</li>
     </div>
     <img :src="meal.strMealThumb" alt="Meal Image" class="meal-image">
   </div>
