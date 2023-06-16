@@ -4,15 +4,30 @@
     <div>
       <h2 class="meal-name">{{ meal.strMeal }}</h2>
       <p class="meal-instructions">{{ meal.strInstructions }}</p>
-      <li class="meal-ingredients">{{ meal.strIngredient1 }}</li>
-      <li class="meal-ingredients">{{ meal.strIngredient2 }}</li>
-      <li class="meal-ingredients">{{ meal.strIngredient3 }}</li>
-      <li class="meal-ingredients">{{ meal.strIngredient4 }}</li>
-      <li class="meal-ingredients">{{ meal.strIngredient5 }}</li>
-      <li class="meal-ingredients">{{ meal.strIngredient6 }}</li>
-      <li class="meal-ingredients">{{ meal.strIngredient7 }}</li>
-      <li class="meal-ingredients">{{ meal.strIngredient8 }}</li>
-      <li class="meal-ingredients">{{ meal.strIngredient9 }}</li>
+      <div class="lists">
+        <ul>
+          <li class="meal-measure">{{ meal.strMeasure1 }}</li>
+          <li class="meal-measure">{{ meal.strMeasure2 }}</li>
+          <li class="meal-measure">{{ meal.strMeasure3 }}</li>
+          <li class="meal-measure">{{ meal.strMeasure4 }}</li>
+          <li class="meal-measure">{{ meal.strMeasure5 }}</li>
+          <li class="meal-measure">{{ meal.strMeasure6 }}</li>
+          <li class="meal-measure">{{ meal.strMeasure7 }}</li>
+          <li class="meal-measure">{{ meal.strMeasure8 }}</li>
+          <li class="meal-measure">{{ meal.strMeasure9 }}</li>
+        </ul>
+        <ul>
+          <li class="meal-ingredients">{{ meal.strIngredient1 }}</li>
+          <li class="meal-ingredients">{{ meal.strIngredient2 }}</li>
+          <li class="meal-ingredients">{{ meal.strIngredient3 }}</li>
+          <li class="meal-ingredients">{{ meal.strIngredient4 }}</li>
+          <li class="meal-ingredients">{{ meal.strIngredient5 }}</li>
+          <li class="meal-ingredients">{{ meal.strIngredient6 }}</li>
+          <li class="meal-ingredients">{{ meal.strIngredient7 }}</li>
+          <li class="meal-ingredients">{{ meal.strIngredient8 }}</li>
+          <li class="meal-ingredients">{{ meal.strIngredient9 }}</li>
+        </ul>
+      </div>
     </div>
     <img :src="meal.strMealThumb" alt="Meal Image" class="meal-image">
   </div>
@@ -38,6 +53,12 @@ export default {
 </script>
 
 <style scoped>
+
+.lists{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .meal-detail {
   background-color: #f9f9f9;
   display: flex;
